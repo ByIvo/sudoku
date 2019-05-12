@@ -34,4 +34,8 @@ class SudokuGame
 
         return $rows;
     }
+
+    public function getAllColumns(): array {
+        return null;
+    }
 }
