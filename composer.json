@@ -1,0 +1,24 @@
+{
+    "name": "byivo/sudoku",
+    "description": "Soduku project to manage all yours Sudoku games.",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ByIvo",
+            "email": "irbatistela@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Sudoku\\": "src/"},
+        "autoload-dev": {
+          "psr-4": {
+            "Test\\Sudoku\\": "test/"
+          }
+        }
+    },
+    "minimum-stability": "stable"
+}
