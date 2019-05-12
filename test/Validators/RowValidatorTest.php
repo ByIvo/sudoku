@@ -21,7 +21,7 @@ class RowValidatorTest extends TestCase {
     public function testWhenTheRowContainsDuplication_shouldReturnFalse(): void {
         $sudokuGame = $this->mockSudokuGameWithLines([['1', '1', '3', '4', '5', '6', '7', '8', '9']]);
 
-        $isValidRow = $this->rowValidator->validateAllRowsIn($sudokuGame);
+        $isValidRow = $this->rowValidator->validateSudokuGame($sudokuGame);
 
         $this->assertThat($isValidRow, self::isFalse());
     }
@@ -29,7 +29,7 @@ class RowValidatorTest extends TestCase {
     public function testWhenTheRowIsValid_shouldReturnTrue(): void {
         $sudokuGame = $this->mockSudokuGameWithLines([['1', '2', '3', '4', '5', '6', '7', '8', '9']]);
 
-        $isValidRow = $this->rowValidator->validateAllRowsIn($sudokuGame);
+        $isValidRow = $this->rowValidator->validateSudokuGame($sudokuGame);
 
         $this->assertThat($isValidRow, self::isTrue());
     }

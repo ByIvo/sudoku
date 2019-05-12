@@ -3,14 +3,11 @@
 
 namespace Sudoku\Validators;
 
-
 use Sudoku\Model\SudokuGame;
 
-class RowValidator
-{
+class RowValidator implements Validator {
 
-    public function validateAllRowsIn(SudokuGame $sudokuGame): bool
-    {
+    public function validateSudokuGame(SudokuGame $sudokuGame): bool {
         foreach ($sudokuGame->getAllRows() as $row) {
             if($this->containDuplicationInRow($row)) {
                 return false;

@@ -6,8 +6,9 @@ namespace Sudoku\Validators;
 
 use Sudoku\Model\SudokuGame;
 
-class ColumnValidator {
-    public function validateAllColumnsIn(SudokuGame $sudokuGame): bool {
+class ColumnValidator implements Validator {
+
+    public function validateSudokuGame(SudokuGame $sudokuGame): bool {
         foreach ($sudokuGame->getAllColumns() as $column) {
             if($this->hasAnyDuplicationInColumn($column)) {
                 return false;

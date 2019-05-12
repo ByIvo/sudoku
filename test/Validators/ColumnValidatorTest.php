@@ -18,7 +18,7 @@ class ColumnValidatorTest extends TestCase {
     public function testWhenTheColumnContainsDuplication_shouldReturnFalse(): void {
         $sudokuGame = $this->mockSudokuGameWithColumns([['9', '2', '3', '4', '5', '6', '7', '8', '9']]);
 
-        $validGame = $this->columnValidator->validateAllColumnsIn($sudokuGame);
+        $validGame = $this->columnValidator->validateSudokuGame($sudokuGame);
 
         $this->assertThat($validGame, $this->isFalse());
     }
@@ -26,7 +26,7 @@ class ColumnValidatorTest extends TestCase {
     public function testWhenTheColumnIsValid_shouldReturnTrue(): void {
         $sudokuGame = $this->mockSudokuGameWithColumns([['1', '2', '3', '4', '5', '6', '7', '8', '9']]);
 
-        $validGame = $this->columnValidator->validateAllColumnsIn($sudokuGame);
+        $validGame = $this->columnValidator->validateSudokuGame($sudokuGame);
 
         $this->assertThat($validGame, $this->isTrue());
     }
