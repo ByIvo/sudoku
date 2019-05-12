@@ -1,11 +1,12 @@
 <?php
 
-namespace Sudoku\Validators;
+namespace Test\Sudoku\Validators;
 
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sudoku\Model\SudokuGame;
+use Sudoku\Validators\ColumnValidator;
 
 class ColumnValidatorTest extends TestCase {
 
