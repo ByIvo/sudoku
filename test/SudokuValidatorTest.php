@@ -49,4 +49,129 @@ SUDOKU
             ],
     ];
     }
+
+    /**
+     * @dataProvider getInvalidLineInSudokuGames
+     */
+    public function testInvalidLineInSudokuGame_shouldReturnFalse(string $invalidSudokuGame): void {
+        $sudokuGame = new SudokuGame($invalidSudokuGame);
+
+        $invalidGame = SudokuValidator::validate($sudokuGame);
+
+        $this->assertThat($invalidGame, $this->isFalse());
+    }
+
+
+    public function getInvalidLineInSudokuGames() : array {
+        return [
+            ['line_1_invalid' => <<<SUDOKU
+1 1 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 2 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 8 1 2 4 5 9 7
+4 2 1 7 9 5 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_2_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 8 1 2 4 5 9 7
+4 2 1 7 9 5 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_3_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 9 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 8 1 2 4 5 9 7
+4 2 1 7 9 5 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_4_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 7 8 6 2 1 4
+6 3 8 1 2 4 5 9 7
+4 2 1 7 9 4 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_5_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 5 1 2 4 5 9 7
+4 2 1 7 9 4 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_6_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 5 1 2 4 5 9 7
+4 2 1 7 8 4 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_7_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 5 1 2 4 5 9 7
+4 2 1 7 9 4 3 8 6
+9 8 2 6 5 7 4 7 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_8_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 5 1 2 4 5 9 7
+4 2 1 7 9 4 3 8 6
+9 8 2 6 5 7 4 3 1
+3 2 6 8 4 1 9 7 2
+7 1 4 2 3 9 6 5 8
+SUDOKU
+            ],
+            ['line_9_invalid' => <<<SUDOKU
+1 9 7 5 6 2 8 4 3
+8 6 5 4 1 3 7 8 9
+2 4 3 9 7 8 1 6 5
+5 7 9 3 8 6 2 1 4
+6 3 5 1 2 4 5 9 7
+4 2 1 7 9 4 3 8 6
+9 8 2 6 5 7 4 3 1
+3 5 6 8 4 1 9 7 2
+7 1 4 2 3 9 1 5 8
+SUDOKU
+            ],
+        ];
+    }
 }
