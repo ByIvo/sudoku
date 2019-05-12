@@ -36,6 +36,19 @@ class SudokuGame
     }
 
     public function getAllColumns(): array {
-        return null;
+        $rows = $this->getAllRows();
+        return $this->invertLinesToExposeColumns($rows);
+    }
+
+    private function invertLinesToExposeColumns(array $rows): array {
+        $columns = [];
+
+        for ($i = 0; $i < sizeof($rows); $i++) {
+            for ($j = 0; $j < sizeof($rows[$i]); $j++) {
+                $columns[$j][$i] = $rows[$i][$j];
+            }
+        }
+
+        return $columns;
     }
 }
