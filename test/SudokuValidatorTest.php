@@ -166,13 +166,11 @@ SUDOKU
     /**
      * @dataProvider getAllInvalidSudokuGames
      */
-    public function testInvalidLineInSudokuGame_shouldReturnFalse(string $invalidSudokuGame): void {
+    public function testInvalidRowInSudokuGame_shouldReturnFalse(string $invalidSudokuGame): void {
         $sudokuGame = new SudokuGame($invalidSudokuGame);
 
         $invalidGame = SudokuValidator::validate($sudokuGame);
 
         $this->assertThat($invalidGame, $this->isFalse());
     }
-
-
 }
