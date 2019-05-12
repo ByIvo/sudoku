@@ -53,6 +53,25 @@ class SudokuGame
     }
 
     public function getAllBlocks(): array {
-        return null;
+        $rows = $this->getAllRows();
+        return $this->extractChunksInRowsToExposeBlocks($rows);
+    }
+
+    private function extractChunksInRowsToExposeBlocks(array $rows): array {
+        $blocks = [];
+
+        for ($i = 0; $i < sizeof($rows); $i++) {
+            for ($j = 0; $j < sizeof($rows[$i]); $j++) {
+                $value = $rows[$i][$j];
+                $rowIndexOfChunk = $this->calculateNextBlockIndexBasedOnChunkPosition($i, $j);
+                $blocks[$rowIndexOfChunk][] = $value;
+            }
+        }
+        
+        return $blocks;
+    }
+
+    private function calculateNextBlockIndexBasedOnChunkPosition(int $i, int $j): int {
+        return intdiv($j, 3) + (3 * intdiv($i, 3));
     }
 }
