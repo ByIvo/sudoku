@@ -1,9 +1,10 @@
 <?php
 
-namespace Sudoku\Model;
+namespace Test\Sudoku\Model;
 
 
 use PHPUnit\Framework\TestCase;
+use Sudoku\Model\SudokuGame;
 
 class SudokuGameTest extends TestCase
 {

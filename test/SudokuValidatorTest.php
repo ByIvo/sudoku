@@ -3,25 +3,14 @@
 namespace Test\Sudoku;
 
 
+use PHPUnit\Framework\TestCase;
 use Sudoku\Model\SudokuGame;
 use Sudoku\SudokuValidator;
-use PHPUnit\Framework\TestCase;
 
 class SudokuValidatorTest extends TestCase
 {
 
-    /**
-     * @dataProvider getValidSudokuGames
-     */
-    public function testAValidLine_shouldReturnTrue(string $validSudokuGame): void {
-        $sudokuGame = new SudokuGame($validSudokuGame);
-
-        $validGame = SudokuValidator::validate($sudokuGame);
-
-        $this->assertThat($validGame, $this->isTrue());
-    }
-
-    public static function getValidSudokuGames() : array {
+    public function getValidSudokuGames() : array {
         return [
             [<<<SUDOKU
 6 3 9 4 8 1 5 7 2
@@ -47,22 +36,21 @@ SUDOKU
 7 1 4 2 3 9 6 5 8
 SUDOKU
             ],
-    ];
+        ];
     }
 
     /**
-     * @dataProvider getInvalidLineInSudokuGames
+     * @dataProvider getValidSudokuGames
      */
-    public function testInvalidLineInSudokuGame_shouldReturnFalse(string $invalidSudokuGame): void {
-        $sudokuGame = new SudokuGame($invalidSudokuGame);
+    public function testAValidLine_shouldReturnTrue(string $validSudokuGame): void {
+        $sudokuGame = new SudokuGame($validSudokuGame);
 
-        $invalidGame = SudokuValidator::validate($sudokuGame);
+        $validGame = SudokuValidator::validate($sudokuGame);
 
-        $this->assertThat($invalidGame, $this->isFalse());
+        $this->assertThat($validGame, $this->isTrue());
     }
 
-
-    public function getInvalidLineInSudokuGames() : array {
+    public function getAllInvalidSudokuGames() : array {
         return [
             ['line_1_invalid' => <<<SUDOKU
 1 1 7 5 6 2 8 4 3
@@ -174,4 +162,17 @@ SUDOKU
             ],
         ];
     }
+
+    /**
+     * @dataProvider getAllInvalidSudokuGames
+     */
+    public function testInvalidLineInSudokuGame_shouldReturnFalse(string $invalidSudokuGame): void {
+        $sudokuGame = new SudokuGame($invalidSudokuGame);
+
+        $invalidGame = SudokuValidator::validate($sudokuGame);
+
+        $this->assertThat($invalidGame, $this->isFalse());
+    }
+
+
 }
