@@ -5,9 +5,9 @@ namespace Sudoku;
 
 
 use Sudoku\Model\SudokuGame;
+use Sudoku\Validators\BlockValidator;
 use Sudoku\Validators\ColumnValidator;
 use Sudoku\Validators\RowValidator;
-use Sudoku\Validators\Validator;
 
 class SudokuValidator {
 
@@ -23,7 +23,8 @@ class SudokuValidator {
     public static function validate(SudokuGame $sudokuGame) : bool {
         $sudokuValidator = new SudokuValidator([
             new ColumnValidator(),
-            new RowValidator()
+            new RowValidator(),
+            new BlockValidator(),
         ]);
 
         return $sudokuValidator->validateWithDefaultsValidators($sudokuGame);

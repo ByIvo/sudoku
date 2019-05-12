@@ -51,4 +51,8 @@ class SudokuGame
 
         return $columns;
     }
+
+    public function getAllBlocks(): array {
+        return null;
+    }
 }
